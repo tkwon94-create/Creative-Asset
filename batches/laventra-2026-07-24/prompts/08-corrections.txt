@@ -1,0 +1,9 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- The right column header must read exactly: "WHAT GROW:TURN ADDS" with a COLON in GROW:TURN, not a hyphen.
+- Left column rows, exactly: "Washes away buildup", "Cleans the hair strand", "Rinses out in minutes" — last attempt wrote "buiklup" and "Rinss" and left one bullet empty. Exactly three rows per column, none empty.
+- Right column row two must read exactly: "Targets the root, not the strand".

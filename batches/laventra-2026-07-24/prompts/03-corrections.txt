@@ -1,0 +1,9 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- The sub-line must read exactly: "2 minutes a day with the built-in scalp brush" — last attempt wrote "built-uin".
+- The four stage labels are exactly: "TODAY", "WEEK 2", "WEEK 6", "WEEK 12" — last attempt wrote "1 WEEK 12" on the fourth panel.
+- All four panels show the same rear view of the same woman with the same hairstyle; only hair density at the part changes.

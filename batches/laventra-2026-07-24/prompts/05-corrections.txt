@@ -1,0 +1,9 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- Last attempt copied a nasal-relief advertiser's footer (a domain, "Breathe Freely", a "Learn more" button) from the reference — absolutely NONE of that may appear. The reference's layout is being borrowed, not its brand or its ad frame.
+- The bottom promise line must read exactly: "It's not just 'mom shedding.' It's your scalp environment — and it can be fed." Last attempt wrote "and a can fed" which is wrong.
+- Use a burnt-orange (#B75A2B) headline bar instead of a blue one.

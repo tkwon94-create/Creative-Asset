@@ -42,8 +42,12 @@ def main():
     results = json.load(open(results_path)) if os.path.exists(results_path) else {}
 
     for n in nums:
-        prompt_file = glob.glob(os.path.join(BATCH_DIR, "prompts", f"{n}-*.txt"))[0]
+        prompt_file = [p for p in glob.glob(os.path.join(BATCH_DIR, "prompts", f"{n}-*.txt"))
+                       if "corrections" not in p][0]
         instructions = open(prompt_file, encoding="utf-8").read().strip() + suffix
+        corrections = os.path.join(BATCH_DIR, "prompts", f"{n}-corrections.txt")
+        if os.path.exists(corrections):
+            instructions += "\n" + open(corrections, encoding="utf-8").read()
         prompt = generate_static.build_prompt(instructions)
         print(f"== static {n} ({REF[n]})", flush=True)
         r = higgsfield_client.subscribe("nano-banana", {

@@ -1,0 +1,8 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- The sub-line must read exactly: "Scalp-first care, made with biotechnology" — last attempt wrote "biconnology".
+- Under the sketches render ONLY the three week labels "WEEK 1", "WEEK 4", "WEEK 8" — no other words beneath them. Last attempt added face-related labels like "Jawline returns" which must NOT appear; this ad is about hair volume only.

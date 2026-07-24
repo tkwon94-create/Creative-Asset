@@ -1,0 +1,8 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- The headline must read exactly: "Korean moms have kept a 2-minute scalp ritual for generations. American shampoo routines skip it entirely." Last attempt garbled it ("rcalp", "shoumines", "entirrely") — every word must be perfect.
+- Body copy errors to avoid: it is "treats the scalp like skin" (no doubled words), "biotech Heartleaf exosome water" (not "ewoster"), "built-in fine-bristle brush", "No salon appointment."

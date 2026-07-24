@@ -1,0 +1,8 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- The right callout label must read exactly: "underfed follicles" — last attempt wrote "folkicles".
+- The "tight, dry scalp" arrow must point at the woman's HEAD/scalp area, not her torso.

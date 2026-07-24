@@ -1,0 +1,9 @@
+
+
+CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
+- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
+- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
+- Triple-check the spelling of EVERY rendered word against the quoted text.
+- Line 1 must read exactly: "2 YEARS OF POSTPARTUM SHEDDING" — last attempt wrote "POSTPARTURM".
+- Line 2 must read exactly: "the turnaround started at her scalp" — last attempt wrote "the turronnand started".
+- The supporting line must read exactly: "Biotech scalp care with a built-in brush — 2 minutes a day" — last attempt wrote "built-uint".
