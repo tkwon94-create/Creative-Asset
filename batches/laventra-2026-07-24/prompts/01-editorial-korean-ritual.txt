@@ -1,0 +1,24 @@
+Preserve the reference's editorial magazine structure exactly: large serif headline block
+at top, three short serif copy blocks stacked down the left rail, one clean product object
+on the right, generous whitespace, understated article-page feel with no loud ad graphics.
+
+Swaps:
+- Product object: the attached LAVENTRA GROW:TURN tube (white tube, burnt-orange
+  "LAVENTRA" logo, brush-bristle base), label preserved with photographic fidelity.
+- Palette: off-white paper background, near-black serif text, burnt orange (#B75A2B) used
+  only for thin rules and one accent word.
+
+Headline (serif, exactly): "Korean moms have kept a 2-minute scalp ritual for
+generations. American shampoo routines skip it entirely."
+
+Left-rail copy blocks (small serif, exactly):
+Block 1: "While Western routines wash and rush, Korean scalp care treats the scalp like
+skin — fed, brushed, and circulated daily."
+Block 2: "GROW:TURN pairs biotech Heartleaf exosome water with a built-in fine-bristle
+brush, so the ritual takes two minutes at the kitchen table."
+Block 3: "No salon appointment. No greasy residue. Just a healthier environment for
+thicker, fuller-looking hair."
+
+Small footer line in orange (exactly): "LAVENTRA — For Hair Scalp Care"
+
+US market: US spelling, no prices, no press logos, no invented credentials.

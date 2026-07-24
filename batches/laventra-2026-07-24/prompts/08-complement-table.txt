@@ -1,0 +1,20 @@
+Preserve the reference's structure exactly: a two-column complement table (not an attack
+comparison) under a headline, with the product photographed beside or beneath the table.
+The framing is "what your current routine does / what we add on top."
+
+Swaps:
+- Headline (exactly): "Your shampoo cleans. It was never meant to do this."
+- LEFT column header (exactly): "WHAT SHAMPOO DOES" — rows, exactly:
+  "Washes away buildup", "Cleans the hair strand", "Rinses out in minutes"
+- RIGHT column header (exactly): "WHAT GROW:TURN ADDS" — rows, exactly:
+  "Feeds the scalp after washing", "Targets the root, not the strand",
+  "Works on the scalp all day"
+- Right-column rows get burnt-orange check icons; left column gets neutral gray dots —
+  the left column is NOT mocked or X'd out, it's simply incomplete.
+- Product: the attached LAVENTRA GROW:TURN tube beside the table, label preserved with
+  photographic fidelity.
+- Small footer line (exactly): "Keep your shampoo. Add the missing step."
+- Palette: white background, near-black text, burnt orange (#B75A2B) accents.
+- Generic wording only — no competitor brand names or look-alike bottles anywhere.
+
+US spelling. No prices, no ratings, no percentages.

@@ -1,0 +1,20 @@
+Preserve the reference's structure exactly: the product centered as the hero, four
+benefit callouts orbiting it in an X pattern with thin connector lines, a single CTA pill
+below, and a tri-part trust bar along the bottom.
+
+Swaps:
+- Hero product: the attached LAVENTRA GROW:TURN tube, large and centered, label
+  preserved with photographic fidelity, fine brush bristles clearly visible at its base.
+- The four callouts (short bold title + one small line each), exactly:
+  1. "BUILT-IN SCALP BRUSH" / "fine bristles deliver it right to the root"
+  2. "HEARTLEAF EXOSOME WATER" / "(V)BioExo-Water biotech hydration"
+  3. "SCALP CLERA COMPLEX" / "feeds a healthier scalp environment"
+  4. "NO GREASY RESIDUE" / "absorbs clean — even on dry hair"
+- CTA pill (exactly): "TRY GROW:TURN"
+- Trust bar, three chips: a five-star glyph row with the word "Loved by moms" (no
+  numeric count), then "2-MINUTE DAILY RITUAL", then "MADE FOR HAIR SCALP CARE".
+  Do NOT render any regulator logo, pharmacy badge, or certification mark.
+- Palette: clean white background, near-black text, burnt orange (#B75A2B) for the CTA
+  pill, callout titles, and connector dots.
+
+US spelling. No prices, no invented review counts, no third-party logos.

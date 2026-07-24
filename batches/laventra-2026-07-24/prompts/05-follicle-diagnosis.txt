@@ -1,0 +1,19 @@
+Preserve the reference's structure exactly: a large central scientific 3D render split
+into two labeled states (healthy vs problem), a bold curiosity headline above, and a
+single promise line below. NO product appears anywhere in the image — the problem is the
+whole ad.
+
+Swaps:
+- The 3D render: a cross-section of scalp skin with hair follicles, medical-illustration
+  style. LEFT side labeled "NOURISHED SCALP": follicles anchored deep, thick hair shafts,
+  calm skin tone. RIGHT side labeled "DEPLETED SCALP": shallow, shrunken follicles with
+  thin wispy shafts and a stressed reddish surface. Clean clinical lighting, education
+  aesthetic — clearly an illustration, not gore.
+- Headline (exactly): "The real reason your part keeps getting wider"
+- Promise line below (exactly): "It's not just 'mom shedding.' It's your scalp
+  environment — and it can be fed."
+- Palette: soft clinical off-white background, near-black text, burnt orange (#B75A2B)
+  for the two state labels.
+
+US spelling. No brand marks, no product, no percentages, no disease names, no medical
+treatment claims.
