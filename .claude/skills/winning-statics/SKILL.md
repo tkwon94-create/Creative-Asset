@@ -16,15 +16,20 @@ Every generation call sends the actual reference image — the model sees the wi
 its own eyes and rebuilds it around the user's product, rather than working from a lossy text
 description.
 
-## Cost transparency (say this up front)
+## Providers and cost transparency (say this up front)
 
-Generation runs on the user's own Google API key at roughly **$0.13–0.14 per image**
-(about $4 for a 30-image batch), and a large batch takes real minutes to generate and
-quality-check. Tell the user this before generating, because surprise bills kill trust.
+Generation runs through whichever provider the user has set up — the script auto-detects:
 
-If `GEMINI_API_KEY` is not set in the environment, walk the user through
-[GEMINI_SETUP.md](GEMINI_SETUP.md) first (5 minutes, one time). The key never goes into the
-chat or into any file — scripts read it from the environment only.
+- **Gemini** (Google API key in `GEMINI_API_KEY`): roughly **$0.13–0.14 per image** on
+  their key, about $4 for a 30-image batch. Setup: [GEMINI_SETUP.md](GEMINI_SETUP.md).
+- **Higgsfield** (`higgsfield` CLI, logged in): draws on their Higgsfield plan's credits —
+  no Google key needed. Setup: [HIGGSFIELD_SETUP.md](HIGGSFIELD_SETUP.md).
+
+Either way, a large batch costs real money and real minutes to generate and quality-check.
+Tell the user this before generating, because surprise bills kill trust. If neither provider
+is ready, walk them through the setup doc for the one they have (or prefer) — 5 minutes, one
+time. Keys never go into the chat or into any file — scripts read credentials from the
+environment or CLI session only.
 
 ## The workflow
 
@@ -84,6 +89,9 @@ python3 scripts/generate_static.py \
   --aspect-ratio 4:5 \
   --out output/static-NN.png
 ```
+
+The provider is auto-detected (add `--provider gemini|higgsfield` to force one; the
+Higgsfield provider also accepts `--resolution 1k|2k|4k`, default 2k).
 
 The swap instructions must:
 - Describe the reference's structure to preserve (layout skeleton, hierarchy, panel geometry,
@@ -175,7 +183,8 @@ When in doubt, Family 6 converts across nearly every niche.
 
 ## When something goes wrong
 
-Key errors, quota errors, and billing errors each print a specific message;
-[GEMINI_SETUP.md](GEMINI_SETUP.md)'s troubleshooting table maps each one to its fix.
+Key errors, auth errors, quota errors, and billing errors each print a specific message;
+the troubleshooting tables in [GEMINI_SETUP.md](GEMINI_SETUP.md) and
+[HIGGSFIELD_SETUP.md](HIGGSFIELD_SETUP.md) map each one to its fix.
 Generation quality issues (warped label, misspelled text, plastic-looking skin) are caught by
 the QC pass and regenerated automatically up to two times.

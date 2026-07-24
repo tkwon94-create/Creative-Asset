@@ -1,5 +1,8 @@
 # One-Time Setup — Google API Key
 
+> Don't have (or want) a Google API key? The skill also runs through a Higgsfield
+> plan — see [HIGGSFIELD_SETUP.md](HIGGSFIELD_SETUP.md) instead.
+
 Winning-Statics generates images with Google's Nano Banana Pro model using **your own
 Google API key**. This walkthrough is written for someone who has never touched an API.
 Five minutes, one time, done.
