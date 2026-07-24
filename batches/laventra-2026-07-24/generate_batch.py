@@ -50,12 +50,22 @@ def main():
             instructions += "\n" + open(corrections, encoding="utf-8").read()
         prompt = generate_static.build_prompt(instructions)
         print(f"== static {n} ({REF[n]})", flush=True)
-        r = higgsfield_client.subscribe("nano-banana", {
-            "prompt": prompt,
-            "aspect_ratio": "4:5",
-            "image_urls": [f"{RAW_BASE}/{REF[n]}.png", PRODUCT_URL],
-        })
-        url = r["images"][0]["url"]
+        url = None
+        for attempt in range(3):
+            try:
+                r = higgsfield_client.subscribe("nano-banana", {
+                    "prompt": prompt,
+                    "aspect_ratio": "4:5",
+                    "image_urls": [f"{RAW_BASE}/{REF[n]}.png", PRODUCT_URL],
+                })
+                url = r["images"][0]["url"]
+                break
+            except RuntimeError as e:
+                # The provider's nsfw flag misfires transiently on benign ads.
+                print(f"   attempt {attempt + 1} failed: {e}", flush=True)
+        if url is None:
+            print(f"   SKIPPED static {n} after 3 attempts", flush=True)
+            continue
         results[n] = url
         json.dump(results, open(results_path, "w"), indent=2)
         print(f"   {url}", flush=True)
