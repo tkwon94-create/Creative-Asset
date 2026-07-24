@@ -53,3 +53,23 @@ bash batches/laventra-2026-07-24/run.sh 3 7        # regenerate specific numbers
 Step 0 synthesizes the clean LAVENTRA product photo (`product/laventra-grow-turn.png`)
 from the label spec, since the original photo lives only in the chat thread; QC it
 against the real tube before the statics run.
+
+## QC status after 3 generation rounds (2026-07-24)
+
+| # | Status | Notes |
+|---|--------|-------|
+| 01 | NEAR-MISS | Strong layout; "entarely" + one garbled body line remain |
+| 02 | FLAGGED | Headline still drops "to"; round-3 visual has the comparison inverted |
+| 03 | FLAGGED | Text now clean but rendered 6 panels instead of 4 |
+| 04 | PASS | All text correct; letterbox bars should be cropped before launch |
+| 05 | PASS | Letter-perfect, clean anatomy split |
+| 06 | PASS | Letter-perfect ("starved roots" swap); thin bars, crop before launch |
+| 07 | NEAR-MISS | Trust bar fixed; "right the root", doubled "even", stray paren |
+| 08 | FLAGGED | Table format degrades every round; header garbled |
+| 09 | NEAR-MISS | Portrait excellent; quote still renders "thas't it" |
+| 10 | FLAGGED | "POSTPARTUM" misrenders every round in huge type |
+
+Lesson captured: layered base-prompt + corrections created conflicting copy on 09/10;
+any further round should rewrite the base prompt files to the final copy and delete
+the correction layers. Big display type with unusual words (POSTPARTUM) and dense
+multi-line copy are the model's consistent weak spots; short-copy formats pass.
