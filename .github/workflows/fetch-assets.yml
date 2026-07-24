@@ -1,0 +1,43 @@
+name: fetch-assets
+# This remote dev environment cannot reach Higgsfield's result CDN directly, so
+# generated images are pulled into the repo by CI instead: push a fetch-manifest.json
+# listing {url, path} pairs and this workflow downloads each file and commits it back
+# to the same branch. It only triggers on manifest changes, so its own commit (images
+# only) never re-triggers it.
+on:
+  push:
+    branches:
+      - claude/winning-statics-product-rc8gjc
+    paths:
+      - "batches/**/fetch-manifest.json"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download manifest entries
+        run: |
+          python3 - <<'PY'
+          import glob, json, os, urllib.request
+          for manifest in glob.glob("batches/**/fetch-manifest.json", recursive=True):
+              for item in json.load(open(manifest)):
+                  path = os.path.normpath(item["path"])
+                  assert not path.startswith(("/", "..")), path
+                  os.makedirs(os.path.dirname(path), exist_ok=True)
+                  req = urllib.request.Request(item["url"],
+                                               headers={"User-Agent": "fetch-assets/1.0"})
+                  with urllib.request.urlopen(req, timeout=120) as r, open(path, "wb") as f:
+                      f.write(r.read())
+                  print("fetched", path)
+          PY
+      - name: Commit fetched files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Fetch generated assets from CDN"
+          git push
