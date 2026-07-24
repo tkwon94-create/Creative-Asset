@@ -22,8 +22,9 @@ Generation runs through whichever provider the user has set up — the script au
 
 - **Gemini** (Google API key in `GEMINI_API_KEY`): roughly **$0.13–0.14 per image** on
   their key, about $4 for a 30-image batch. Setup: [GEMINI_SETUP.md](GEMINI_SETUP.md).
-- **Higgsfield** (`higgsfield` CLI, logged in): draws on their Higgsfield plan's credits —
-  no Google key needed. Setup: [HIGGSFIELD_SETUP.md](HIGGSFIELD_SETUP.md).
+- **Higgsfield** (either the `higgsfield` CLI logged in, or a platform API key in
+  `HF_API_KEY`/`HF_API_SECRET`): draws on their Higgsfield plan's credits — no Google key
+  needed. Setup for both routes: [HIGGSFIELD_SETUP.md](HIGGSFIELD_SETUP.md).
 
 Either way, a large batch costs real money and real minutes to generate and quality-check.
 Tell the user this before generating, because surprise bills kill trust. If neither provider
@@ -90,8 +91,8 @@ python3 scripts/generate_static.py \
   --out output/static-NN.png
 ```
 
-The provider is auto-detected (add `--provider gemini|higgsfield` to force one; the
-Higgsfield provider also accepts `--resolution 1k|2k|4k`, default 2k).
+The provider is auto-detected (add `--provider gemini|higgsfield|higgsfield-api` to force
+one; the Higgsfield providers also accept `--resolution 1k|2k|4k`, default 2k).
 
 The swap instructions must:
 - Describe the reference's structure to preserve (layout skeleton, hierarchy, panel geometry,

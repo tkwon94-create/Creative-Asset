@@ -4,14 +4,19 @@
 Sends the actual reference image + the user's product photo + precise swap
 instructions to Google's Nano Banana Pro image model, through one of two providers:
 
-  gemini      Google Gemini API directly. Needs GEMINI_API_KEY in the environment
-              and `pip install google-genai pillow`. See GEMINI_SETUP.md.
-  higgsfield  The Higgsfield CLI (model nano_banana_2). Needs the `higgsfield` CLI
-              installed and logged in via `higgsfield auth login`. No API key to
-              manage. See HIGGSFIELD_SETUP.md.
+  gemini          Google Gemini API directly. Needs GEMINI_API_KEY in the
+                  environment and `pip install google-genai pillow`. See
+                  GEMINI_SETUP.md.
+  higgsfield      The Higgsfield CLI (model nano_banana_2). Needs the `higgsfield`
+                  CLI installed and logged in via `higgsfield auth login`. No API
+                  key to manage. See HIGGSFIELD_SETUP.md.
+  higgsfield-api  The Higgsfield platform API with an API key. Needs HF_API_KEY and
+                  HF_API_SECRET (or combined HF_KEY="key:secret") in the environment
+                  and `pip install higgsfield-client`. See HIGGSFIELD_SETUP.md.
 
-If --provider is omitted, the script auto-detects: GEMINI_API_KEY set -> gemini,
-otherwise a `higgsfield` CLI on PATH -> higgsfield.
+If --provider is omitted, the script auto-detects in this order:
+GEMINI_API_KEY set -> gemini; Higgsfield API key set -> higgsfield-api;
+`higgsfield` CLI on PATH -> higgsfield.
 
 Credentials are never read from files or arguments — environment / CLI session
 only, so they can't leak into chat logs or version control.
@@ -36,13 +41,33 @@ import urllib.request
 GEMINI_MODEL = os.environ.get("WINNING_STATICS_MODEL", "gemini-3-pro-image-preview")
 HIGGSFIELD_MODEL = os.environ.get("WINNING_STATICS_HF_MODEL", "nano_banana_2")
 
+# The platform API's model path for Nano Banana Pro is not publicly documented, so
+# it is overridable; candidates are tried in order and the first that works is
+# reported so the user can pin it via WINNING_STATICS_HF_MODEL_PATH.
+HF_API_MODEL_PATHS = (
+    [os.environ["WINNING_STATICS_HF_MODEL_PATH"]]
+    if os.environ.get("WINNING_STATICS_HF_MODEL_PATH")
+    else [
+        "google/nano-banana-pro/edit",
+        "google/nano-banana-pro",
+        "google/nano-banana/edit",
+        "nano-banana-pro/edit",
+    ]
+)
+
 NO_PROVIDER_HELP = """\
 ERROR: no image provider available.
 
 Set up one of:
-  gemini      export GEMINI_API_KEY=...        (see GEMINI_SETUP.md)
-  higgsfield  install the CLI + `higgsfield auth login`  (see HIGGSFIELD_SETUP.md)
+  gemini          export GEMINI_API_KEY=...             (see GEMINI_SETUP.md)
+  higgsfield      install the CLI + `higgsfield auth login`   (see HIGGSFIELD_SETUP.md)
+  higgsfield-api  export HF_API_KEY=... HF_API_SECRET=...     (see HIGGSFIELD_SETUP.md)
 """
+
+
+def has_hf_api_key() -> bool:
+    return bool(os.environ.get("HF_KEY")
+                or (os.environ.get("HF_API_KEY") and os.environ.get("HF_API_SECRET")))
 
 
 def die(msg: str, code: int = 1) -> None:
@@ -160,6 +185,73 @@ def generate_higgsfield(args: argparse.Namespace, prompt: str) -> None:
         die(f"ERROR: generated OK but download failed ({e}).\nAsset URL: {url}")
 
 
+# -------------------------------------------------------- higgsfield-api
+
+def generate_higgsfield_api(args: argparse.Namespace, prompt: str) -> None:
+    try:
+        import higgsfield_client
+    except ImportError:
+        die("ERROR: missing dependency.\nFix: pip install higgsfield-client")
+
+    try:
+        ref_url = higgsfield_client.upload_file(args.reference)
+        prod_url = higgsfield_client.upload_file(args.product)
+    except Exception as e:
+        msg = str(e)
+        if "401" in msg or "unauthorized" in msg.lower() or "invalid" in msg.lower():
+            die("ERROR: the Higgsfield API rejected your credentials.\n"
+                "Fix: re-copy HF_API_KEY / HF_API_SECRET from your Higgsfield "
+                "platform dashboard (no extra spaces).")
+        die(f"ERROR: upload to Higgsfield failed: {msg}")
+
+    # The exact argument name for input images is undocumented; try common shapes.
+    image_args = [
+        {"image_urls": [ref_url, prod_url]},
+        {"input_images": [ref_url, prod_url]},
+        {"images": [ref_url, prod_url]},
+    ]
+
+    last_err = None
+    for model_path in HF_API_MODEL_PATHS:
+        for extra in image_args:
+            try:
+                result = higgsfield_client.subscribe(
+                    model_path,
+                    arguments={
+                        "prompt": prompt,
+                        "aspect_ratio": args.aspect_ratio,
+                        "resolution": args.resolution.upper(),
+                        **extra,
+                    },
+                )
+            except Exception as e:
+                last_err = f"{model_path} ({list(extra)[0]}): {e}"
+                continue
+            images = (result or {}).get("images") or []
+            url = images[0].get("url") if images and isinstance(images[0], dict) else None
+            if not url:
+                last_err = f"{model_path}: job finished but returned no image URL"
+                continue
+            try:
+                with urllib.request.urlopen(url, timeout=120) as resp, \
+                        open(args.out, "wb") as f:
+                    shutil.copyfileobj(resp, f)
+            except Exception as e:
+                die(f"ERROR: generated OK but download failed ({e}).\nAsset URL: {url}")
+            if not os.environ.get("WINNING_STATICS_HF_MODEL_PATH"):
+                print(f"note: model path '{model_path}' worked — pin it with "
+                      f"export WINNING_STATICS_HF_MODEL_PATH='{model_path}' to skip "
+                      "discovery next time.")
+            return
+
+    die("ERROR: no known model path for Nano Banana Pro was accepted by the "
+        "platform API.\n"
+        f"Last error: {last_err}\n"
+        "Fix: find the exact model path in your Higgsfield platform dashboard / "
+        "docs and set it:\n"
+        "  export WINNING_STATICS_HF_MODEL_PATH='<provider/model/variant>'")
+
+
 # ----------------------------------------------------------------- main
 
 def main() -> None:
@@ -172,7 +264,7 @@ def main() -> None:
                     help="Output aspect ratio (default 1:1)")
     ap.add_argument("--resolution", default="2k", choices=["1k", "2k", "4k"],
                     help="Output resolution, higgsfield provider only (default 2k)")
-    ap.add_argument("--provider", choices=["gemini", "higgsfield"],
+    ap.add_argument("--provider", choices=["gemini", "higgsfield", "higgsfield-api"],
                     help="Force a provider; omit to auto-detect")
     ap.add_argument("--out", required=True, help="Output PNG path")
     args = ap.parse_args()
@@ -185,6 +277,8 @@ def main() -> None:
     if not provider:
         if os.environ.get("GEMINI_API_KEY"):
             provider = "gemini"
+        elif has_hf_api_key():
+            provider = "higgsfield-api"
         elif shutil.which("higgsfield"):
             provider = "higgsfield"
         else:
@@ -194,6 +288,10 @@ def main() -> None:
     elif provider == "higgsfield" and not shutil.which("higgsfield"):
         die("ERROR: --provider higgsfield but the `higgsfield` CLI is not on PATH.\n"
             "See HIGGSFIELD_SETUP.md.")
+    elif provider == "higgsfield-api" and not has_hf_api_key():
+        die("ERROR: --provider higgsfield-api but no API key found.\n"
+            "Fix: export HF_API_KEY=... and HF_API_SECRET=... (or HF_KEY=\"key:secret\").\n"
+            "See HIGGSFIELD_SETUP.md.")
 
     with open(args.prompt_file, encoding="utf-8") as f:
         prompt = build_prompt(f.read().strip())
@@ -201,6 +299,8 @@ def main() -> None:
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     if provider == "gemini":
         generate_gemini(args, prompt)
+    elif provider == "higgsfield-api":
+        generate_higgsfield_api(args, prompt)
     else:
         generate_higgsfield(args, prompt)
     print(f"OK: saved {args.out} (provider: {provider})")

@@ -46,6 +46,24 @@ def test_gemini() -> bool:
     return True
 
 
+def test_higgsfield_api() -> bool:
+    print("--- Provider: higgsfield-api ---")
+    has_key = bool(os.environ.get("HF_KEY")
+                   or (os.environ.get("HF_API_KEY") and os.environ.get("HF_API_SECRET")))
+    if not has_key:
+        print("  SKIP — no HF_API_KEY/HF_API_SECRET (or HF_KEY) set "
+              "(see HIGGSFIELD_SETUP.md Route B to use this provider).")
+        return False
+    try:
+        import higgsfield_client  # noqa: F401
+    except ImportError:
+        print("  FAIL — SDK not installed. Fix: pip install higgsfield-client")
+        return False
+    print("  OK — API key present and SDK installed. (Credentials are verified "
+          "server-side on first upload/generation.)")
+    return True
+
+
 def test_higgsfield() -> bool:
     print("--- Provider: higgsfield ---")
     if not shutil.which("higgsfield"):
@@ -80,14 +98,14 @@ def test_higgsfield() -> bool:
 
 def main() -> None:
     print("Winning-Statics self-test\n")
-    results = [test_gemini(), test_higgsfield()]
+    results = [test_gemini(), test_higgsfield_api(), test_higgsfield()]
     print()
     if any(results):
         print("Ready: at least one provider passed. You're set to generate statics.")
     else:
         print("No provider is ready. Set up one of:\n"
               "  - GEMINI_SETUP.md      (Google API key)\n"
-              "  - HIGGSFIELD_SETUP.md  (Higgsfield CLI login)")
+              "  - HIGGSFIELD_SETUP.md  (Higgsfield CLI login or platform API key)")
         sys.exit(1)
 
 
