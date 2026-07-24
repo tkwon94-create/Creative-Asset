@@ -47,8 +47,10 @@ def _credentials():
 def _request(method, url, payload=None, timeout=60):
     key, secret = _credentials()
     data = json.dumps(payload).encode() if payload is not None else None
+    # Cloudflare rejects Python-urllib's default agent signature (error 1010).
     req = urllib.request.Request(url, data=data, method=method, headers={
-        "hf-api-key": key, "hf-secret": secret, "Content-Type": "application/json"})
+        "hf-api-key": key, "hf-secret": secret, "Content-Type": "application/json",
+        "User-Agent": "winning-statics/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode())
