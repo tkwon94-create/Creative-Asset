@@ -1,9 +1,9 @@
 
 
-CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
-- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
-- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
-- Triple-check the spelling of EVERY rendered word against the quoted text.
-- The quote must read exactly: "I stopped dreading my hairbrush. Two minutes at naptime, that's it." — last attempt wrote "that'st it" which is wrong.
-- Attribution exactly: "Emily K., 34 — mom of two" (period after the K).
-- The tube in her hand must show its label crisp and correct: "LAVENTRA" then "GROW:TURN" then "AMPOULE" — last attempt warped these words. Keep the label facing camera and legible.
+FINAL RENDER RULES:
+- Fill the ENTIRE canvas edge to edge. No black bars anywhere.
+- No ad-interface elements: no domain bar, no buttons, no platform chrome.
+- Every quoted string must be rendered letter-perfect. Render text in a crisp, clean font and double-check each word.
+- The quote reads exactly: "I stopped dreading my hairbrush. Two minutes at naptime is all it takes."
+- The attribution reads exactly: "Emily K., 34 — mom of two"
+- The tube in her hand shows, crisp and straight: "LAVENTRA" / "GROW:TURN" / "AMPOULE"

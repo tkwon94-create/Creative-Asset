@@ -1,8 +1,8 @@
 
 
-CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
-- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
-- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
-- Triple-check the spelling of EVERY rendered word against the quoted text.
-- The sub-line must read exactly: "Scalp-first care, made with biotechnology" — last attempt wrote "biconnology".
-- Under the sketches render ONLY the three week labels "WEEK 1", "WEEK 4", "WEEK 8" — no other words beneath them. Last attempt added face-related labels like "Jawline returns" which must NOT appear; this ad is about hair volume only.
+FINAL RENDER RULES:
+- Fill the ENTIRE canvas edge to edge. No black bars anywhere.
+- No ad-interface elements: no domain bar, no buttons, no platform chrome.
+- Every quoted string must be rendered letter-perfect. Render text in a crisp, clean font and double-check each word.
+- The sub-line reads exactly: "Scalp-first care for fuller, thicker hair"
+- Under the sketches render ONLY: "WEEK 1", "WEEK 4", "WEEK 8" — nothing else beneath them.

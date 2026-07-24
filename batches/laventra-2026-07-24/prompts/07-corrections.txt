@@ -1,8 +1,9 @@
 
 
-CORRECTIONS TO A PREVIOUS FAILED ATTEMPT — obey exactly:
-- Fill the ENTIRE canvas edge to edge with the design. No black bars, no letterboxing.
-- Do NOT render any social-media ad interface: no domain bar, no website address, no 'Shop now' or 'Learn more' buttons, no platform chrome of any kind.
-- Triple-check the spelling of EVERY rendered word against the quoted text.
-- Callout 2's small line must read exactly: "(V)BioExo-Water biotech hydration" — the word "biotech" appears ONCE. Last attempt duplicated it.
-- The middle trust chip must read exactly: "2-MINUTE DAILY RITUAL" — last attempt wrote "RITIUAL".
+FINAL RENDER RULES:
+- Fill the ENTIRE canvas edge to edge. No black bars anywhere.
+- No ad-interface elements: no domain bar, no buttons, no platform chrome.
+- Every quoted string must be rendered letter-perfect. Render text in a crisp, clean font and double-check each word.
+- Callout 2 reads exactly: "HEARTLEAF EXOSOME WATER" / "(V)BioExo-Water hydration"
+- Callout 4 reads exactly: "NO GREASY RESIDUE" / "sinks in clean — even on dry hair"
+- The three trust chips read exactly: "Loved by moms" under five FULL stars, "TAKES 2 MINUTES A DAY", "MADE FOR HAIR SCALP CARE"
